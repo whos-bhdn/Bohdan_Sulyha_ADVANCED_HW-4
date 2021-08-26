@@ -34,10 +34,7 @@ let hmn = new Human('black', 55, 190);
 
 class Man extends Human {
     constructor(skinColor, weigth, height) {
-        super();
-        this.color = skinColor;
-        this.weight = weigth;
-        this.height = height;
+        super(skinColor, weigth, height);
     };
     hardWork(){
         console.log(`I can hard work`);
@@ -51,10 +48,7 @@ man1.sleep()
 
 class Woman  extends Human{
     constructor(skinColor, weigth, height) {
-        super();
-        this.color = skinColor;
-        this.weight = weigth;
-        this.height = height;
+        super(skinColor, weigth, height);
     }
     officeWork(){
         console.log(`I can do office work`);
@@ -68,10 +62,7 @@ wmn1.eat()
 
 class Librarian extends Woman{
     constructor(skinColor, weigth, height) {
-        super();
-        this.color = skinColor;
-        this.weight = weigth;
-        this.height = height;
+        super(skinColor, weigth, height);
     }
     chooseBook(){
         console.log(`I help you to choose a book`)
@@ -85,10 +76,7 @@ lbr1.walk()
 
 class Nurse extends Woman{
     constructor(skinColor, weigth, height) {
-        super();
-        this.color = skinColor;
-        this.weight = weigth;
-        this.height = height;
+        super(skinColor, weigth, height);
     }
     injection() {
         console.log(`Make an injection?`)
@@ -102,10 +90,7 @@ nrs1.injection()
 
 class Hunter extends Man{
     constructor(skinColor, weigth, height) {
-        super();
-        this.color = skinColor;
-        this.weight = weigth;
-        this.height = height;
+        super(skinColor, weigth, height);
     }
     hunt(){
         console.log(`I can hunting`)
@@ -119,10 +104,7 @@ hntr1.hunt();
 
 class Worker extends Man{
     constructor(skinColor, weigth, height) {
-        super();
-        this.color = skinColor;
-        this.weight = weigth;
-        this.height = height;
+        super(skinColor, weigth, height);
     }
     rapair(){
         console.log(`I can make repairs in the apartment`)
@@ -133,3 +115,104 @@ let wrkr1 = new Worker('dark', 86, 186);
 console.log(wrkr1);
 wrkr1.rapair();
 wrkr1.walk()
+
+
+// Завдання 2.
+//
+// •	Створити клас Animal зі своїми властивостями та методами які можуть бути у всіх
+// тварин (ходити, бігати, мати шерсть і т.д.)
+// •	Від цього класу повинні наслідуватись 2 класи Herbivorous і Predator.
+// •	Далі розширюєм функціонал – для Herbivorous створити вид 2 тварин, а також для
+// Predator.
+
+class Animal{
+    constructor(wool, sharpTeeth) {
+        this.wool = wool;
+        this.sharpTeeth = sharpTeeth;
+    }
+    run(){
+        console.log(`Can run`)
+    }
+    eat(){
+        console.log(`Can eat`)
+    }
+    sleep(){
+        console.log(`Can sleep`)
+    }
+};
+
+let animal = new Animal('true', 'true');
+console.log(animal)
+animal.eat();
+animal.run();
+
+class Herbivorous extends Animal{
+    constructor(wool, sharpTeeth, wild) {
+        super(wool, sharpTeeth);
+        this.wild = wild;
+    }
+}
+
+class Rabbit extends Herbivorous{
+    constructor(wool, sharpTeeth, wild, longEars) {
+        super(wool, sharpTeeth, wild);
+        this.longEars = longEars;
+    }
+    eatCarrot(){
+        console.log(`Eat carrot`)
+    }
+}
+
+let rabbit = new Rabbit('true', 'true', 'false', 'true');
+console.log(rabbit);
+rabbit.eatCarrot();
+
+class Cow extends Herbivorous{
+    constructor(wool, sharpTeeth, wild) {
+        super(wool, sharpTeeth, wild);
+    }
+    giveMilk(){
+        console.log(`Gives milk`)
+    }
+    graze(){
+        console.log(`Graze all day`)
+    }
+}
+
+let cow = new Cow('true', 'false', 'false');
+console.log(cow);
+cow.graze()
+cow.giveMilk()
+cow.sleep()
+
+class Predator extends Animal{
+    constructor(wool, sharpTeeth, wild) {
+        super(wool, sharpTeeth);
+        this.wild = wild;
+    }
+    hunt(){
+        console.log(`Can hunt`)
+    }
+};
+
+class Wolf extends Predator{
+    constructor(wool, sharpTeeth, wild) {
+        super(wool, sharpTeeth, wild);
+    }
+}
+let wolf = new Wolf('true', 'true', 'true');
+console.log(wolf)
+
+class Fox extends Predator{
+    constructor(wool, sharpTeeth, wild) {
+        super(wool, sharpTeeth, wild);
+    }
+}
+let fox = new Fox('true', 'true', 'true');
+console.log(fox)
+
+
+
+
+
+
